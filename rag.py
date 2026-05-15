@@ -17,7 +17,9 @@ class RAG:
 
         self.n_results = 5
 
-        
+        self.tools = None
+
+
     def query_tour(self, query, n_results):
         results = self.collection.query(
             query_texts=[query],
