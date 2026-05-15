@@ -19,6 +19,23 @@ class RAG:
 
         self.tools = None
 
+    def init_vector_db(self):
+        #create client if not exists
+        if self.client is None:
+            self.client = chromadb.PersistentClient(path="./vector_db/")
+        #create collection if not exists
+        if self.collection is None:
+            self.collection = self.client.get_or_create_collection(
+                name="tours_collection",
+                embedding_function=self.embedding_function
+            )
+
+        #create embedding function from sentence-transformer 
+        if self.embedding_function is None:
+            self.embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
+                model_name="paraphrase-multilingual-mpnet-base-v2"
+            )
+        pass
 
     def query_tour(self, query, n_results):
         results = self.collection.query(

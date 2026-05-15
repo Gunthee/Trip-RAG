@@ -15,4 +15,4 @@ df = pd.read_csv('tours_merged_cleaned2.csv')
 
 df['description'] = df['description'].apply(clean_text)
 
-print(df['description'][100])
+#print(df['description'][100])

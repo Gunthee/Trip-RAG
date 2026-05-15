@@ -18,7 +18,7 @@ def generate_tour_recommendations(request: User_prompt):
 
 @app.post("/query")
 def query_tour(request: User_prompt):
-    results = rag.query(request.user_prompt)
+    results = rag.query_tour(request.user_prompt, n_results=5)
     return results
 
 @app.post("/generate", response_model=User_prompt)
