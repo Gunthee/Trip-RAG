@@ -1,0 +1,7 @@
+__pycache__/
+venv/
+tours_merged_cleaned.csv
+/vector_db
+.env
+*csv
+*pyc
